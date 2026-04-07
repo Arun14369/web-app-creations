@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "home" },
+  { label: "About", href: "about" },
+  { label: "Services", href: "services" },
+  { label: "Why Us", href: "why-us" },
+  { label: "Contact", href: "contact" },
 ];
+
+const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +33,7 @@ const Navbar = () => {
     >
       <div className="container-max flex items-center justify-between px-6 sm:px-8 lg:px-12">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <button onClick={() => scrollTo("home")} className="flex items-center gap-3 group">
           <div className="w-11 h-11 rounded-lg gold-gradient flex items-center justify-center shadow-glow group-hover:scale-105 transition-transform duration-300">
             <span className="font-heading font-bold text-primary text-lg">A</span>
           </div>
@@ -41,27 +45,25 @@ const Navbar = () => {
               Government Contractors
             </span>
           </div>
-        </a>
+        </button>
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.href}
-              href={link.href}
+              onClick={() => scrollTo(link.href)}
               className={`text-[13px] font-medium tracking-wide uppercase transition-all duration-300 hover:text-accent relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full ${
                 isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
               }`}
             >
               {link.label}
-            </a>
-          ))}
-          <a href="#contact">
-            <button className="btn-premium text-primary text-sm px-6 py-2.5 rounded-lg flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              Get Quote
             </button>
-          </a>
+          ))}
+          <button onClick={() => scrollTo("contact")} className="btn-premium text-primary text-sm px-6 py-2.5 rounded-lg flex items-center gap-2">
+            <Phone className="w-4 h-4" />
+            Get Quote
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -82,22 +84,22 @@ const Navbar = () => {
         <div className="lg:hidden glass-card mt-2 mx-4 rounded-xl shadow-premium overflow-hidden">
           <div className="px-6 py-6 space-y-1">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="block text-foreground/80 font-medium py-3 text-sm tracking-wide uppercase hover:text-accent hover:pl-2 transition-all border-b border-border/50 last:border-0"
+                onClick={() => { scrollTo(link.href); setIsMobileOpen(false); }}
+                className="block w-full text-left text-foreground/80 font-medium py-3 text-sm tracking-wide uppercase hover:text-accent hover:pl-2 transition-all border-b border-border/50 last:border-0"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
             <div className="pt-3">
-              <a href="#contact" onClick={() => setIsMobileOpen(false)}>
-                <button className="w-full btn-premium text-primary font-semibold py-3 rounded-lg flex items-center justify-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  Get Quote
-                </button>
-              </a>
+              <button
+                onClick={() => { scrollTo("contact"); setIsMobileOpen(false); }}
+                className="w-full btn-premium text-primary font-semibold py-3 rounded-lg flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Get Quote
+              </button>
             </div>
           </div>
         </div>
