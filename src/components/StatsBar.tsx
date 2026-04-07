@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Building2, Users, Briefcase, Trophy } from "lucide-react";
 
 const stats = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 500, suffix: "+", label: "Projects Completed" },
-  { value: 5000, suffix: "+", label: "Workers Deployed" },
-  { value: 120, suffix: "+", label: "Government Tenders Won" },
+  { value: 15, suffix: "+", label: "Years of Experience", icon: Building2 },
+  { value: 500, suffix: "+", label: "Projects Completed", icon: Briefcase },
+  { value: 5000, suffix: "+", label: "Workers Deployed", icon: Users },
+  { value: 120, suffix: "+", label: "Tenders Won", icon: Trophy },
 ];
 
 const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
@@ -32,7 +32,7 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
   }, [isInView, target]);
 
   return (
-    <span ref={ref} className="font-heading text-4xl md:text-5xl font-bold text-accent">
+    <span ref={ref} className="font-heading text-4xl md:text-5xl font-bold text-gradient-gold inline-block">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -40,23 +40,34 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
 
 const StatsBar = () => {
   return (
-    <section className="relative -mt-16 z-10 section-padding py-12">
+    <section className="relative -mt-20 z-10 px-6 sm:px-8 lg:px-12 pb-12">
       <div className="container-max">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="navy-gradient rounded-2xl px-8 py-12 shadow-2xl"
+          transition={{ duration: 0.7 }}
+          className="navy-gradient rounded-2xl px-8 md:px-12 py-14 shadow-premium relative overflow-hidden texture-overlay"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat) => (
-              <div key={stat.label}>
+          {/* Decorative corner accents */}
+          <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-accent/20 rounded-tl-2xl" />
+          <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-accent/20 rounded-br-2xl" />
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center relative z-10">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <stat.icon className="w-6 h-6 text-accent/60 mx-auto mb-3" />
                 <Counter target={stat.value} suffix={stat.suffix} />
-                <p className="text-primary-foreground/70 mt-2 text-sm font-medium tracking-wide">
+                <p className="text-primary-foreground/50 mt-3 text-xs font-medium tracking-[0.15em] uppercase">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

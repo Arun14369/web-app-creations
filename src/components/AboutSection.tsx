@@ -11,67 +11,87 @@ const highlights = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding bg-background">
-      <div className="container-max">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle background accents */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
+      
+      <div className="container-max relative">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div className="rounded-2xl overflow-hidden shadow-premium">
               <img
                 src={aboutTeam}
                 alt="Our professional team at a construction site"
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[520px] object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 gold-gradient rounded-xl p-6 shadow-xl hidden md:block">
-              <p className="font-heading text-3xl font-bold text-primary">15+</p>
-              <p className="text-primary text-sm font-semibold">Years of Trust</p>
-            </div>
+            {/* Floating card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="absolute -bottom-8 -right-4 md:-right-8 gold-gradient rounded-xl p-6 shadow-glow hidden md:block"
+            >
+              <p className="font-heading text-4xl font-bold text-primary">15+</p>
+              <p className="text-primary text-sm font-semibold mt-1">Years of Trust</p>
+            </motion.div>
+            {/* Decorative border */}
+            <div className="absolute -inset-4 border-2 border-accent/10 rounded-2xl -z-10 hidden lg:block" />
           </motion.div>
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
           >
-            <span className="text-accent font-semibold text-sm tracking-widest uppercase">
+            <span className="text-accent font-semibold text-xs tracking-[0.25em] uppercase">
               Who We Are
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mt-3 mb-6">
+            <div className="accent-line mt-4 mb-6" />
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground leading-tight mb-8">
               A Legacy of Industrial
               <br />
               <span className="text-primary">Excellence & Trust</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="text-muted-foreground leading-[1.8] mb-6 text-[15px]">
               Apex Industries is a leading government-registered contracting firm
               specializing in tender-based projects and comprehensive manpower
               supply for AAC block manufacturing plants across India. With over
               15 years of proven expertise, we have built a reputation for
               reliability, quality, and timely execution.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
+            <p className="text-muted-foreground leading-[1.8] mb-10 text-[15px]">
               Our commitment to operational excellence and workforce management
               has earned us the trust of government bodies, industrial clients,
               and major infrastructure developers nationwide.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {highlights.map((item) => (
-                <div key={item} className="flex items-center gap-3">
+            <div className="grid sm:grid-cols-2 gap-5">
+              {highlights.map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="flex items-center gap-3 bg-secondary/60 rounded-lg px-4 py-3"
+                >
                   <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
                   <span className="text-foreground font-medium text-sm">{item}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
