@@ -43,8 +43,8 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-us" className="section-padding bg-background relative overflow-hidden">
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
+    <section id="why-us" className="section-padding bg-white relative overflow-hidden">
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
 
       <div className="container-max relative">
         <motion.div
@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="text-accent font-semibold text-xs tracking-[0.25em] uppercase">
+          <span className="text-primary font-semibold text-xs tracking-[0.25em] uppercase">
             Our Strengths
           </span>
           <div className="accent-line mx-auto mt-4 mb-6" />
@@ -75,13 +75,13 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative bg-card border border-border/60 rounded-2xl p-8 hover:shadow-card-hover hover:border-accent/20 transition-all duration-500"
+              className="group relative bg-white border border-border/60 rounded-2xl p-8 hover:shadow-card-hover hover:border-primary/20 transition-all duration-500"
             >
               {/* Hover accent line */}
-              <div className="absolute top-0 left-8 right-8 h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+              <div className="absolute top-0 left-8 right-8 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
               
-              <div className="w-14 h-14 rounded-xl navy-gradient flex items-center justify-center mb-6 group-hover:shadow-glow transition-shadow duration-500">
-                <reason.icon className="w-6 h-6 text-accent" />
+              <div className="w-14 h-14 rounded-xl bg-primary/8 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:shadow-glow transition-all duration-500">
+                <reason.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-500" />
               </div>
               <h3 className="font-heading text-lg font-bold text-foreground mb-3">
                 {reason.title}

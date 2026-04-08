@@ -11,9 +11,9 @@ const highlights = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding bg-background relative overflow-hidden">
+    <section id="about" className="section-padding bg-white relative overflow-hidden">
       {/* Subtle background accents */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent/3 rounded-full blur-3xl" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
       
       <div className="container-max relative">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -41,13 +41,13 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute -bottom-8 -right-4 md:-right-8 gold-gradient rounded-xl p-6 shadow-glow hidden md:block"
+              className="absolute -bottom-8 -right-4 md:-right-8 bg-primary rounded-xl p-6 shadow-glow hidden md:block"
             >
-              <p className="font-heading text-4xl font-bold text-primary">15+</p>
-              <p className="text-primary text-sm font-semibold mt-1">Years of Trust</p>
+              <p className="font-heading text-4xl font-bold text-white">15+</p>
+              <p className="text-white/80 text-sm font-semibold mt-1">Years of Trust</p>
             </motion.div>
             {/* Decorative border */}
-            <div className="absolute -inset-4 border-2 border-accent/10 rounded-2xl -z-10 hidden lg:block" />
+            <div className="absolute -inset-4 border-2 border-primary/10 rounded-2xl -z-10 hidden lg:block" />
           </motion.div>
 
           {/* Content */}
@@ -57,7 +57,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <span className="text-accent font-semibold text-xs tracking-[0.25em] uppercase">
+            <span className="text-primary font-semibold text-xs tracking-[0.25em] uppercase">
               Who We Are
             </span>
             <div className="accent-line mt-4 mb-6" />
@@ -87,9 +87,9 @@ const AboutSection = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex items-center gap-3 bg-secondary/60 rounded-lg px-4 py-3"
+                  className="flex items-center gap-3 bg-primary/5 rounded-lg px-4 py-3"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-foreground font-medium text-sm">{item}</span>
                 </motion.div>
               ))}

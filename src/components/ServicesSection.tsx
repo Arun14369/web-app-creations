@@ -34,8 +34,8 @@ const services = [
 const ServicesSection = () => {
   return (
     <section id="services" className="section-padding bg-secondary/50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+
       <div className="container-max relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,7 +44,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <span className="text-accent font-semibold text-xs tracking-[0.25em] uppercase">
+          <span className="text-primary font-semibold text-xs tracking-[0.25em] uppercase">
             What We Do
           </span>
           <div className="accent-line mx-auto mt-4 mb-6" />
@@ -65,7 +65,7 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 group relative"
+              className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 group relative"
             >
               {/* Image */}
               <div className="overflow-hidden h-60 relative">
@@ -77,8 +77,8 @@ const ServicesSection = () => {
                   height={600}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 to-transparent" />
-                <span className="absolute bottom-4 left-5 font-heading text-4xl font-bold text-primary-foreground/20">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/50 to-transparent" />
+                <span className="absolute bottom-4 left-5 font-heading text-4xl font-bold text-white/20">
                   {service.num}
                 </span>
               </div>
@@ -95,7 +95,7 @@ const ServicesSection = () => {
                   {service.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1.5 bg-secondary text-secondary-foreground text-[11px] font-medium tracking-wide uppercase rounded-full"
+                      className="px-3 py-1.5 bg-primary/5 text-primary text-[11px] font-medium tracking-wide uppercase rounded-full"
                     >
                       {tag}
                     </span>
@@ -103,9 +103,9 @@ const ServicesSection = () => {
                 </div>
                 <a
                   href="#contact"
-                  className="inline-flex items-center text-accent font-semibold text-sm group/link"
+                  className="inline-flex items-center text-primary font-semibold text-sm group/link"
                 >
-                  <span className="border-b border-accent/30 group-hover/link:border-accent transition-colors">
+                  <span className="border-b border-primary/30 group-hover/link:border-primary transition-colors">
                     Learn More
                   </span>
                   <ArrowUpRight className="w-4 h-4 ml-1 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
